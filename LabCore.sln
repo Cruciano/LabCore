@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabCore", "LabCore\LabCore.csproj", "{D725355A-8139-4194-A535-3FC640FFCC27}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D725355A-8139-4194-A535-3FC640FFCC27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D725355A-8139-4194-A535-3FC640FFCC27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D725355A-8139-4194-A535-3FC640FFCC27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D725355A-8139-4194-A535-3FC640FFCC27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {12DA8EE1-1E78-4035-8B37-0232F0B6A393}
+	EndGlobalSection
+EndGlobal
