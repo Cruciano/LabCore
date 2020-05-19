@@ -124,7 +124,7 @@ namespace LabCore.MVVMPresentation
                     {
                         nessMaterialNames.Add(n.Name + "\t\t" + n.Count.ToString());
                     }
-                }));
+                }, o => order != null));
             }
         }
 
