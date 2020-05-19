@@ -24,7 +24,8 @@ namespace LabCore.BusinessLayer
         public WorkshopService(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            LoadData();
+            //LoadData();
+            LoadDataFile();
             nessMaterialCounts = new List<MaterialCount>();
         }
 
@@ -54,11 +55,11 @@ namespace LabCore.BusinessLayer
             return nessMaterialCounts;
         }
 
-        /*     private void LoadDataFromTXT()
-             {
-                 materialCounts = FileReader.ReadMaterialCount(materialsPath);
-                 baugettes = FileReader.ReadBaugette(baugettePath, materialCounts);
-             }*/
+        private void LoadDataFile()
+        {
+            materialCounts = FileReader.ReadMaterialCount("Files/Materials.txt");
+            baugettes = FileReader.ReadBaugette("Files/Baugette.txt", materialCounts);
+        }
 
         private void LoadData()
         {

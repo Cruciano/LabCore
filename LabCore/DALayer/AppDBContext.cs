@@ -18,7 +18,7 @@ namespace LabCore.DALayer
             Database.EnsureCreated();
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+     /*   protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
@@ -63,6 +63,6 @@ namespace LabCore.DALayer
 
             modelBuilder.Entity<MaterialCountEntity>().HasData(matCountList);
             modelBuilder.Entity<MaterialCountEntity>().HasData(baugetteEntities);
-        }
+        }*/
     }
 }
