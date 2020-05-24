@@ -33,7 +33,7 @@ namespace LabCore
         private void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddScoped<AppDBContext>();
+            services.AddSingleton<AppDBContext>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<IWorkshopService, WorkshopService>();
 
@@ -43,7 +43,7 @@ namespace LabCore
         {
             base.OnStartup(e);
 
-            var viewModel = new ViewModel(new WorkshopService(new UnitOfWork(new AppDBContext())));
+            var viewModel = new ViewModel(serviceProvider.GetService<IWorkshopService>());
             MainWindow = new MyMainWindow() { DataContext = viewModel };
             MainWindow.Show();
         }
