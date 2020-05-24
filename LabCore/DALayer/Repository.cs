@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
 using LabCore.DALayer.Interfaces;
+using System.Data.Entity.Migrations;
 
 namespace LabCore.DALayer
 {
@@ -34,7 +35,7 @@ namespace LabCore.DALayer
 
         public void Update(TEntity entity)
         {
-            entities.Update(entity);
+            entities.AddOrUpdate(entity);
         }
         public virtual IEnumerable<TEntity> GetAll()
         {

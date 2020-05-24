@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Data.Entity;
 using LabCore.DALayer.Entities;
 
 
@@ -14,9 +13,9 @@ namespace LabCore.DALayer
         public DbSet<BaugetteEntity> Baugettes { get; set; }
         public DbSet<DetailEntity> details { get; set; }
 
-        public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
+        public AppDBContext() : base("labDataBase")
         {
-            Database.EnsureCreated();
+            
         }
 
      /*   protected override void OnModelCreating(ModelBuilder modelBuilder)

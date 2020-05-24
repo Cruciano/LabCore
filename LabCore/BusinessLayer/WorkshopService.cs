@@ -26,8 +26,8 @@ namespace LabCore.BusinessLayer
         public WorkshopService(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            UpLoadData();
-            //LoadData();
+            //UpLoadData();
+            LoadData();
             //LoadDataFile();
             nessMaterialCounts = new List<MaterialCount>();
         }
@@ -106,9 +106,9 @@ namespace LabCore.BusinessLayer
             List<BaugetteEntity> baugetteEntities = new List<BaugetteEntity>()
             {
                 new BaugetteEntity {Id = 21, Name = "type1", Details = listType1},
-                new BaugetteEntity {Id = 22, Name = "type1", Details = listType2},
-                new BaugetteEntity {Id = 23, Name = "type1", Details = listType3},
-                new BaugetteEntity {Id = 24, Name = "type1", Details = listType4}
+                new BaugetteEntity {Id = 22, Name = "type2", Details = listType2},
+                new BaugetteEntity {Id = 23, Name = "type3", Details = listType3},
+                new BaugetteEntity {Id = 24, Name = "type4", Details = listType4}
             };
 
             foreach (var item in matCountList)
@@ -116,10 +116,10 @@ namespace LabCore.BusinessLayer
                 unitOfWork.MatCountRepository.Create(item);
             }
 
-          /*  foreach(var item in baugetteEntities)
+            foreach(var item in baugetteEntities)
             {
                 unitOfWork.BaugetteRepository.Create(item);
-            }*/
+            }
             unitOfWork.Save();
         }
 

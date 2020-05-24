@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.Entity;
 using LabCore.DALayer.Entities;
 using LabCore.DALayer.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace LabCore.DALayer
 {
@@ -12,7 +12,7 @@ namespace LabCore.DALayer
     {
         public BaugetteRepository(AppDBContext dbContext) : base(dbContext) { }
 
-        public IEnumerable<BaugetteEntity> GetAll()
+        public override IEnumerable<BaugetteEntity> GetAll()
         {
             return dbContext.Baugettes.Include(b => b.Details).ToList();
         }
