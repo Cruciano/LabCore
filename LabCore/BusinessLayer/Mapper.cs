@@ -13,15 +13,15 @@ namespace LabCore.BusinessLayer
             return new MaterialCount(entity.Id, entity.Name, entity.Count);
         }
 
-        public static MaterialCountEntity Map(this MaterialCount entity)
+        public static MaterialCountEntity Map(this MaterialCount blObject)
         {
-            return new MaterialCountEntity() { Id = entity.Id, Name = entity.Name, Count = entity.Count };
+            return new MaterialCountEntity() { Id = blObject.Id, Name = blObject.Name, Count = blObject.Count };
         }
 
         public static Baugette Map(this BaugetteEntity entity)
         {
             List<MaterialCount> matList = new List<MaterialCount>();
-            foreach (var n in entity.MaterialCounts)
+            foreach (var n in entity.Details)
             {
                 matList.Add(n.Map());
             }
@@ -29,15 +29,15 @@ namespace LabCore.BusinessLayer
             return new Baugette(entity.Id, entity.Name, matList);
         }
 
-        public static BaugetteEntity Map(this Baugette entity)
+        public static BaugetteEntity Map(this Baugette blObject)
         {
-            List<MaterialCountEntity> matEntityList = new List<MaterialCountEntity>();
-            foreach (var n in entity.Materials)
+            List<DetailEntity> matEntityList = new List<DetailEntity>();
+            foreach (var n in blObject.Materials)
             {
-                matEntityList.Add(n.Map());
+                matEntityList.Add((DetailEntity)n.Map());
             }
 
-            return new BaugetteEntity() { Id = entity.Id, Name = entity.Name, MaterialCounts = matEntityList };
+            return new BaugetteEntity() { Id = blObject.Id, Name = blObject.Name, Details = matEntityList };
         }
     }
 }

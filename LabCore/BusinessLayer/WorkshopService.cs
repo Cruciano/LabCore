@@ -7,6 +7,8 @@ using LabCore.BusinessLayer.Interfaces;
 using LabCore.BusinessLayer.BaseType;
 using LabCore.DALayer.Interfaces;
 
+using LabCore.DALayer.Entities;
+
 namespace LabCore.BusinessLayer
 {
     class WorkshopService : IWorkshopService
@@ -24,8 +26,9 @@ namespace LabCore.BusinessLayer
         public WorkshopService(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
+            UpLoadData();
             //LoadData();
-            LoadDataFile();
+            //LoadDataFile();
             nessMaterialCounts = new List<MaterialCount>();
         }
 
@@ -65,6 +68,59 @@ namespace LabCore.BusinessLayer
         {
             materialCounts = new List<MaterialCount>(unitOfWork.MatCountRepository.GetAll().Select(materialCount => materialCount.Map()));
             baugettes = new List<Baugette>(unitOfWork.BaugetteRepository.GetAll().Select(baugette => baugette.Map()));
+        }
+
+        private void UpLoadData()
+        {
+            List<MaterialCountEntity> matCountList = new List<MaterialCountEntity>()
+            {
+                new MaterialCountEntity {Id = 11, Name = "metal", Count = 30},
+                new MaterialCountEntity {Id = 12, Name = "plastic", Count = 40},
+                new MaterialCountEntity {Id = 13, Name = "wood", Count = 20},
+                new MaterialCountEntity {Id = 14, Name = "paint", Count = 50},
+            };
+
+
+
+            List<DetailEntity> listType1 = new List<DetailEntity>()
+            {
+                new DetailEntity {Id = 1, Name = "wood", Count = 3},
+                new DetailEntity {Id = 2, Name = "paint", Count = 2}
+            };
+            List<DetailEntity> listType2 = new List<DetailEntity>()
+            {
+                new DetailEntity {Id = 3, Name = "metal", Count = 4},
+                new DetailEntity {Id = 4, Name = "plastic", Count = 5}
+            };
+            List<DetailEntity> listType3 = new List<DetailEntity>()
+            {
+                new DetailEntity {Id = 5, Name = "metal", Count = 5},
+                new DetailEntity {Id = 6, Name = "plastic", Count = 2}
+            };
+            List<DetailEntity> listType4 = new List<DetailEntity>()
+            {
+                new DetailEntity {Id = 7, Name = "plastic", Count = 3},
+                new DetailEntity {Id = 8, Name = "paint", Count = 2}
+            };
+
+            List<BaugetteEntity> baugetteEntities = new List<BaugetteEntity>()
+            {
+                new BaugetteEntity {Id = 21, Name = "type1", Details = listType1},
+                new BaugetteEntity {Id = 22, Name = "type1", Details = listType2},
+                new BaugetteEntity {Id = 23, Name = "type1", Details = listType3},
+                new BaugetteEntity {Id = 24, Name = "type1", Details = listType4}
+            };
+
+            foreach (var item in matCountList)
+            {
+                unitOfWork.MatCountRepository.Create(item);
+            }
+
+          /*  foreach(var item in baugetteEntities)
+            {
+                unitOfWork.BaugetteRepository.Create(item);
+            }*/
+            unitOfWork.Save();
         }
 
         private int IndexFromNameBaug(string name)

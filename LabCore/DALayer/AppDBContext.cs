@@ -12,6 +12,7 @@ namespace LabCore.DALayer
     {
         public DbSet<MaterialCountEntity> MaterialCounts { get; set; }
         public DbSet<BaugetteEntity> Baugettes { get; set; }
+        public DbSet<DetailEntity> details { get; set; }
 
         public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
         {

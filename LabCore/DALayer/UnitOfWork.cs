@@ -10,8 +10,8 @@ namespace LabCore.DALayer
     {
         private AppDBContext dbContext;
 
-        public IRepository<MaterialCountEntity> MatCountRepository { get; }
-        public IRepository<BaugetteEntity> BaugetteRepository { get; }
+        public IMaterialRepository MatCountRepository { get; }
+        public IBaugetteRepository BaugetteRepository { get; }
 
         public UnitOfWork()
         {
@@ -20,8 +20,8 @@ namespace LabCore.DALayer
         public UnitOfWork(AppDBContext dbContext)
         {
             this.dbContext = dbContext;
-            MatCountRepository = new Repository<MaterialCountEntity>(dbContext);
-            BaugetteRepository = new Repository<BaugetteEntity>(dbContext);
+            MatCountRepository = new MaterialRepository(dbContext);
+            BaugetteRepository = new BaugetteRepository(dbContext);
         }
 
 

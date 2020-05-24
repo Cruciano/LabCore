@@ -8,12 +8,8 @@ namespace LabCore.DALayer
 {
     class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private AppDBContext dbContext;
+        protected AppDBContext dbContext;
         private DbSet<TEntity> entities;
-
-        public Repository()
-        {
-        }
 
         public Repository(AppDBContext dbContext)
         {
@@ -40,7 +36,7 @@ namespace LabCore.DALayer
         {
             entities.Update(entity);
         }
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return entities;
         }

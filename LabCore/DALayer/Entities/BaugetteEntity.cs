@@ -7,9 +7,8 @@ namespace LabCore.DALayer.Entities
 {
     public class BaugetteEntity
     {
-        [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<MaterialCountEntity> MaterialCounts { get; set; }
+        public ICollection<DetailEntity> Details { get; set; }
     }
 }

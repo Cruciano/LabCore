@@ -7,8 +7,8 @@ namespace LabCore.DALayer.Interfaces
 {
     interface IUnitOfWork
     {
-        IRepository<MaterialCountEntity> MatCountRepository { get; }
-        IRepository<BaugetteEntity> BaugetteRepository { get; }
+        IMaterialRepository MatCountRepository { get; }
+        IBaugetteRepository BaugetteRepository { get; }
 
         void Save();
     }
