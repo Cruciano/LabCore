@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-//using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using System.Data.Entity;
 using LabCore.DALayer.Interfaces;
 using LabCore.DALayer;
@@ -20,24 +20,24 @@ namespace LabCore
     /// </summary>
     public partial class App : Application
     {
-        //private IServiceProvider serviceProvider;
+        private IServiceProvider serviceProvider;
 
         public App()
         {
-         /*   var services = new ServiceCollection();
+            var services = new ServiceCollection();
             ConfigureServices(services);
-            serviceProvider = services.BuildServiceProvider(validateScopes: true);*/
+            serviceProvider = services.BuildServiceProvider(validateScopes: true);
             ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
 
-    /*    private void ConfigureServices(IServiceCollection services)
+        private void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDBContext>(opt =>
-                opt.UseSqlServer(ConfigurationManager.ConnectionStrings["labDataBase"].ConnectionString), ServiceLifetime.Singleton);
 
+            services.AddScoped<AppDBContext>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<IWorkshopService, WorkshopService>();
-        }*/
+
+        }
 
         protected override void OnStartup(StartupEventArgs e)
         {
